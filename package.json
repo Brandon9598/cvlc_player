@@ -1,0 +1,26 @@
+{
+  "name": "cvlc_node",
+  "version": "1.0.0",
+  "description": "simple node cvlc player",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandon9598/cvlc_player.git"
+  },
+  "keywords": [
+    "vlc",
+    "cvlc",
+    "node",
+    "raspberry",
+    "pi"
+  ],
+  "author": "Brandon Hancock (brandon9598)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brandon9598/cvlc_player/issues"
+  },
+  "homepage": "https://github.com/Brandon9598/cvlc_player#readme"
+}
