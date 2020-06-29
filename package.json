@@ -1,6 +1,6 @@
 {
   "name": "cvlc_node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple node cvlc player",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Brandon9598/cvlc_player/issues"
   },
-  "homepage": "https://github.com/Brandon9598/cvlc_player#readme"
+  "homepage": "https://github.com/Brandon9598/cvlc_player#readme",
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
 }
