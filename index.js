@@ -6,7 +6,7 @@ var defaultArguments = [
   '--no-video-title'
 ]
 
-var players = []
+var videoPlayer;
 
 class vlc {
   constructor (filePath, options) {
@@ -29,20 +29,12 @@ class vlc {
       'vlc://quit'
     ])
 
-    this.process = spawn('cvlc', args, {stdio: 'ignore'})
+    videoPlayer = spawn('cvlc', args, {stdio: 'ignore'})
 
-    this.process.on('close', (code) => {
-        if (code !== 0) {
-            console.log(`ps process exited with code ${code}`);
-        }
-        process.exit()
+    videoPlayer.on('exit', () => {
+      this._callbacks.end()
+      videoPlayer = null;
     })
-
-    this.process.on('exit', () => {
-        this._callbacks.end()
-    })
-
-    players.push(this)
   }
 
   on (what, cb) {
@@ -53,7 +45,7 @@ class vlc {
   }
 
   quit () {
-    if (this.process) this.process.kill('SIGKILL')
+    if (videoPlayer) videoPlayer.kill('SIGKILL')
   }
 
   _throwError (error) {
@@ -61,11 +53,5 @@ class vlc {
     throw new Error('VLC: ' + error.toString())
   }
 }
-
-process.on('SIGINT', function () {
-  players.forEach(player => player.quit())
-  console.log("SIGINT CALLED")
-  process.exit()
-})
 
 module.exports = vlc
